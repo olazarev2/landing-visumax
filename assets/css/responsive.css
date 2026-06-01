@@ -1,0 +1,17 @@
+@media (max-width:767.98px){
+    .about-us .about-us-item {
+        padding: 0 0px;
+    }
+
+    section {
+        padding: 30px 0px 30px 0px;
+    }
+    .services .service-item{
+        padding: 0px;
+    }
+
+    section:not(:last-child) {
+        padding-bottom: 0px;
+    }
+
+}

@@ -108,8 +108,14 @@
     transition: height 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .questions .accordion-body {
-    padding: 0 20px 20px;
+    padding: 16px 20px;
     color: #2f2f2f;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+.questions .accordion-body p {
+    margin: 0;
 }
 
 /* Карточки врачей — квадратные, как на mikof.md */

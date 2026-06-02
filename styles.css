@@ -62,6 +62,9 @@
     position: relative;
     font-family: inherit;
     transition: background 0.2s;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
 }
 .questions .accordion-button:hover {
     background: rgba(0, 148, 214, 0.05);
@@ -116,6 +119,29 @@
 }
 .questions .accordion-body p {
     margin: 0;
+}
+
+/* Кнопки "Онлайн регистрация" и "Личный кабинет" в футере — одинаковый размер (десктоп и мобайл) */
+footer .button .btn-primary,
+footer .social-media .btn-primary {
+    width: 100%;
+    max-width: 300px;
+    min-height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.35;
+    padding: 10px 18px;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+}
+/* Восстанавливаем работу скрытия кнопок по брейкпоинтам (мой display:inline-flex имел приоритет) */
+@media (min-width: 768px) {
+    footer .btn-primary.hide-on-desktop { display: none !important; }
+}
+@media (max-width: 767px) {
+    footer .button.social-media { display: none !important; }
 }
 
 /* Карточки врачей — квадратные, как на mikof.md */
@@ -255,13 +281,18 @@ main > section { padding: 20px 0; }
     justify-content: flex-start;
 }
 #stats .about-us-item h2 {
-    min-height: 2.6em;
+    min-height: 1.25em;
     line-height: 1.25;
     margin: 10px 0;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     text-align: center;
+}
+@media (max-width: 767px) {
+    #stats .about-us-item h2 {
+        min-height: 2.5em;
+    }
 }
 #stats .about-us-item p {
     margin: 12px 0 0;
@@ -719,4 +750,69 @@ main > section { padding: 20px 0; }
     .intro-list li { font-size: 1.05rem; }
     .intro-photo { height: 260px; max-width: 100%; margin: 35px 0 0; }
     .intro-smile { padding: 40px 0; }
+}
+
+/* === МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ (узкие телефоны 320-414px) === */
+
+/* 1. Переопределяем min-width фреймворка для очень узких экранов */
+@media (max-width: 380px) {
+    .dropdown-menu, .modal-dialog {
+        min-width: 0 !important;
+        max-width: calc(100vw - 20px) !important;
+    }
+}
+
+/* 2-3. About-карточки "Что такое SMILE Pro": шрифт и min-height адаптируем */
+@media (max-width: 767px) {
+    #about .border-block {
+        min-height: auto !important;
+        padding: 20px 18px !important;
+    }
+    #about .border-block h3 {
+        font-size: 1.6rem !important;
+    }
+}
+
+/* 4. Карточки цен: меньше padding на мобайле */
+@media (max-width: 767px) {
+    #price .box-shadow {
+        padding: 22px 18px !important;
+    }
+}
+
+/* 5. FAQ-индикатор "+" — компактнее на узких экранах */
+@media (max-width: 380px) {
+    .questions .accordion-button div {
+        padding-right: 42px;
+    }
+    .questions .accordion-button div > span {
+        width: 28px;
+        height: 28px;
+        font-size: 1.35rem;
+    }
+}
+
+/* 6. Карточки докторов — больше воздуха на самых узких экранах */
+@media (max-width: 360px) {
+    #doctors .our-team-item {
+        max-width: 100%;
+    }
+}
+
+/* 7. Pills "Описание метода / ..." — гарантированный wrap */
+@media (max-width: 991px) {
+    .intro-nav__row {
+        flex-wrap: wrap;
+    }
+}
+
+/* 8. Запрет горизонтального скролла на всём документе */
+html, body {
+    overflow-x: hidden;
+}
+
+/* 9. Изображения по умолчанию не вылезают за родителя */
+img {
+    max-width: 100%;
+    height: auto;
 }

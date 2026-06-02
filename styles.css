@@ -61,14 +61,52 @@
     font-size: 1.05rem;
     position: relative;
     font-family: inherit;
+    transition: background 0.2s;
+}
+.questions .accordion-button:hover {
+    background: rgba(0, 148, 214, 0.05);
 }
 .questions .accordion-button div {
     width: 100%;
     position: relative;
-    padding-right: 40px;
+    padding-right: 52px;
 }
-.questions .accordion-collapse { display: none; }
-.questions .accordion-collapse.show { display: block; }
+/* Круглая кнопка-индикатор "+" / "×" справа */
+.questions .accordion-button div > span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #0094d6;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.25s ease, background 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 148, 214, 0.35);
+}
+.questions .accordion-button:hover div > span {
+    background: #007bb3;
+}
+/* При раскрытии "+" поворачивается на 45° и становится "×" */
+.questions .accordion-button:not(.collapsed) div > span {
+    transform: translateY(-50%) rotate(45deg);
+}
+/* Плавная анимация открытия/закрытия FAQ через Bootstrap collapse */
+.questions .accordion-collapse.collapse:not(.show) { display: none; }
+.questions .accordion-collapse.collapse.show { display: block; }
+.questions .accordion-collapse.collapsing {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
 .questions .accordion-body {
     padding: 0 20px 20px;
     color: #2f2f2f;
@@ -126,7 +164,21 @@
 /* Выравнивание колонок показаний/противопоказаний по высоте */
 .indications-row { align-items: stretch; }
 .indications-row > [class*="col-"] { display: flex; }
-.indications-row .border-block { width: 100%; }
+.indications-row .border-block {
+    width: 100%;
+    padding: 20px 24px 4px;
+}
+.indications-row .border-block h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+.indications-row .border-block ul {
+    margin: 0;
+    padding-left: 22px;
+}
+.indications-row .border-block ul li:last-child {
+    margin-bottom: 0;
+}
 
 /* Гарантированный зазор между блоками на мобильной (когда они стэкаются) */
 @media (max-width: 767px) {
@@ -137,6 +189,17 @@
 
 /* === Унификация вертикальных отступов всех секций === */
 main > section { padding: 20px 0; }
+
+/* Единый отступ от синей черты под заголовком секции до следующего блока */
+/* Черта симметрична: 20px от H2 до черты и 20px от черты до следующего блока */
+.b-bottom {
+    margin: 15px auto 20px !important;
+    padding-bottom: 20px !important;
+}
+.b-bottom:after {
+    top: auto !important;
+    bottom: 0 !important;
+}
 
 /* Карточки "Что такое SMILE Pro" — равная высота + контент по центру */
 #about > .container > .row {
@@ -295,13 +358,13 @@ main > section { padding: 20px 0; }
 
 /* === INTRO-блок SMILE Pro === */
 .intro-smile {
-    padding: 20px 0;
+    padding: 35px 0 20px;
     background: #fff;
 }
 
 .intro-content {
-    max-width: 560px;
-    padding-right: 0;
+    max-width: 100%;
+    padding-right: 20px;
     margin-left: auto;
 }
 
@@ -352,8 +415,9 @@ main > section { padding: 20px 0; }
 /* Фото-блок справа */
 .intro-photo {
     height: 384px;
-    max-width: 80%;
-    margin-left: 30px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     border-radius: 26px;
     overflow: hidden;
     background: #f0f3f6;
@@ -368,9 +432,10 @@ main > section { padding: 20px 0; }
 
 /* === Quick-nav pills между intro и about === */
 .intro-nav {
-    padding: 20px 0;
+    padding: 20px 0 0;
     background: #fff;
 }
+#about { padding-top: 20px !important; }
 .intro-nav__row {
     display: flex;
     flex-wrap: nowrap;
@@ -433,20 +498,34 @@ main > section { padding: 20px 0; }
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    table-layout: fixed;
 }
+.compare-table col.col-param { width: 16%; }
+.compare-table col.col-method { width: 21%; }
 .compare-table thead th {
     text-align: center;
-    padding: 14px 10px;
+    padding: 20px 18px;
     color: #0094d6;
-    border-bottom: 2px solid #e9eef3;
+    border-bottom: 1px solid #c8d4e0;
+    vertical-align: middle;
+    white-space: nowrap;
 }
-.compare-table thead th:first-child { text-align: left; }
+.compare-table thead th:first-child { text-align: left; white-space: normal; }
 .compare-table tbody td {
-    padding: 14px 10px;
+    padding: 14px 22px;
     text-align: center;
-    border-bottom: 1px solid #f0f3f6;
+    border-bottom: 1px solid #c8d4e0;
+    vertical-align: middle;
+    line-height: 1.5;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
-.compare-table tbody td:first-child { text-align: left; color: #6c757d; }
+.compare-table tbody td:first-child {
+    text-align: left;
+    color: #6c757d;
+    white-space: normal;
+}
 .compare-table .cell-pro { color: #0094d6; }
 
 @media (max-width: 767px) {
@@ -465,13 +544,10 @@ main > section { padding: 20px 0; }
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
     }
     .compare-table tbody td {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        text-align: right;
-        padding: 8px 0;
-        border-bottom: 1px dashed #f0f3f6;
-        gap: 12px;
+        display: block;
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 1px dashed #c8d4e0;
     }
     .compare-table tbody td:last-child { border-bottom: 0; }
     .compare-table tbody td:first-child {
@@ -481,22 +557,29 @@ main > section { padding: 20px 0; }
         padding-bottom: 10px;
         margin-bottom: 6px;
         border-bottom: 2px solid #0094d6;
-        text-align: left;
-        display: block;
     }
     .compare-table tbody td:not(:first-child)::before {
         content: attr(data-label);
-        flex: 0 0 auto;
+        display: block;
+        font-size: 0.85rem;
         font-weight: 500;
-        color: #6c757d;
-        text-align: left;
+        color: #8a96a4;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+    .compare-table tbody td:not(:first-child) {
+        color: #1a2840;
+        line-height: 1.5;
     }
     .compare-table .cell-pro {
         background: rgba(0,148,214,0.08);
-        margin: 4px -10px 0;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
+        margin: 6px -10px 0;
+        padding: 10px !important;
         border-radius: 8px;
+    }
+    .compare-table .cell-pro::before {
+        color: #0094d6 !important;
     }
 }
 

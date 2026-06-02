@@ -129,6 +129,9 @@
     object-fit: cover;
     object-position: top center;
 }
+#doctors > .container {
+    transform: translateY(-25px);
+}
 #doctors .b-bottom {
     text-align: center;
     justify-content: center;
@@ -136,6 +139,24 @@
 #doctors .b-bottom h2 {
     width: 100%;
     text-align: center;
+}
+/* Центрирование блока с карточками докторов (без изменения внутреннего layout) */
+#doctors .row.justify-content-center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+#doctors .our-team-item {
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 767px) {
+    #doctors .our-team-item {
+        max-width: 320px;
+    }
 }
 #doctors .our-team-body {
     text-align: center;

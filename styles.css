@@ -297,6 +297,18 @@ main > section { padding: 20px 0; }
 #stats .about-us-item p {
     margin: 12px 0 0;
 }
+/* Расстояние между чертой и первым рядом цифр уменьшено на ~90% (без изменения промежутков между рядами) */
+#stats .b-bottom {
+    margin-bottom: 0 !important;
+}
+#stats .row {
+    padding-top: 0;
+    margin-top: 0; /* зазор черта→цифры ≈41px (десктоп) — симметрично зазору заголовок→черта */
+}
+/* На мобильном цифры выше из-за min-height — добавляем 10px, чтобы зазор тоже стал ≈41px */
+@media (max-width: 767px) {
+    #stats .row { margin-top: 10px; }
+}
 
 /* Футер — стили берутся напрямую из mikof'овского app.css без переопределений */
 
@@ -390,17 +402,21 @@ main > section { padding: 20px 0; }
 /* Подпись под прайсом */
 .price-note {
     text-align: center;
-    margin: 30px auto 0;
+    margin: 30px auto 10px; /* по центру серой полосы по вертикали: сверху 30px, снизу 10+20(паддинг секции)=30px */
     max-width: 900px;
     line-height: 1.5;
 }
 @media (max-width: 767px) {
     .price-note {
-        margin: 24px auto 0;
+        margin: 20px auto 0; /* верх 20px; низ обеспечивает padding-bottom секции (ниже) */
         padding: 0 10px;
         max-width: none;
         font-size: 0.95rem;
         line-height: 1.55;
+    }
+    /* у #price нижний паддинг обнулён стилями mikof → возвращаем, чтобы подпись была по центру (снизу 20px) */
+    #price {
+        padding-bottom: 20px;
     }
 }
 #about > .container > .b-bottom:first-child h2 { margin-top: 0; }
@@ -827,12 +843,12 @@ img {
     height: auto;
 }
 
-/* 10. Преимущества методики — расстояние между пунктами 01–06 уменьшено на 40% (паддинги 20px → 12px) */
+/* 10. Преимущества методики — расстояние между пунктами 01–06 уменьшено на 40%, затем ещё на 15% (паддинги 20px → 10.2px) */
 #advantages .block-item {
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
+    padding-top: 10.2px !important;
+    padding-bottom: 10.2px !important;
 }
 #advantages .block-item__body {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 10.2px;
+    padding-bottom: 10.2px;
 }

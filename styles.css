@@ -826,3 +826,13 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* 10. Преимущества методики — расстояние между пунктами 01–06 уменьшено на 40% (паддинги 20px → 12px) */
+#advantages .block-item {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+#advantages .block-item__body {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}

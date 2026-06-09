@@ -419,11 +419,20 @@ main > section { padding: 20px 0; }
     padding: 35px 0 20px;
     background: #fff;
 }
+/* верх текста и верх фото на одной линии */
+.intro-smile .row {
+    align-items: flex-start;
+}
 
 .intro-content {
     max-width: 100%;
     padding-right: 20px;
     margin-left: auto;
+    min-height: 384px; /* высота фото — текст распределяется по ней */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* заголовок закреплён у верхнего края фото */
+    gap: 18px; /* минимальный отступ заголовок→текст (важно и для мобильного) */
 }
 
 .intro-title {
@@ -431,7 +440,7 @@ main > section { padding: 20px 0; }
     line-height: 1.25;
     color: #1a2840;
     font-weight: 700;
-    margin: 0 0 28px;
+    margin: -0.18em 0 0; /* верхний край букв — к верхнему краю фото */
     letter-spacing: -0.005em;
 }
 
@@ -439,11 +448,17 @@ main > section { padding: 20px 0; }
     list-style: none;
     padding: 0;
     margin: 0;
+    /* список занимает всю высоту под заголовком, 2 пункта — равномерно по ней */
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 18px; /* минимум между абзацами (важно для мобильного) */
 }
 .intro-list li {
     position: relative;
     padding-left: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     color: #2f2f2f;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -753,11 +768,12 @@ main > section { padding: 20px 0; }
 @media (max-width: 991px) {
     .intro-title { font-size: 1.96rem; }
     .intro-photo { height: 336px; max-width: 80%; }
-    .intro-content { max-width: none; padding-right: 0; }
+    .intro-content { max-width: none; padding-right: 0; min-height: 336px; }
 }
 @media (max-width: 767px) {
     .intro-title { font-size: 1.72rem; margin-bottom: 22px; }
     .intro-list li { font-size: 1.05rem; }
+    .intro-content { min-height: 0; } /* на телефоне фото уходит вниз — лишняя высота не нужна */
     .intro-photo { height: 260px; max-width: 100%; margin: 35px 0 0; }
     .intro-smile { padding: 40px 0; }
 }

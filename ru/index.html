@@ -302,8 +302,55 @@
                         <p>Главное отличие — скорость. Новый лазер VisuMax 800 работает в четыре раза быстрее предыдущих моделей. На каждый глаз уходит всего около 8 секунд. За это время аппарат аккуратно формирует внутри роговицы тончайший слой ткани, который врач удаляет через крошечный разрез всего 2 мм. Зрение проясняется почти сразу, а уже на следующий день большинство пациентов возвращаются к привычной жизни — за руль, на работу, к экрану смартфона.</p>
                     </div>
                     <div class="smile-explain__media">
-                        <div class="smile-explain__video" aria-label="Видео о работе SMILE Pro">
-                            <span class="smile-explain__play" aria-hidden="true"></span>
+                        <div class="journey" aria-roledescription="карусель" aria-label="Путь пациента по дням">
+                            <div class="journey__track" id="journeyTrack">
+                                <article class="journey__slide">
+                                    <span class="journey__day">Этап 1 · Диагностика</span>
+                                    <span class="journey__num" aria-hidden="true">01</span>
+                                    <span class="journey__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3M9 14.5l2 2 4-4"/></svg></span>
+                                    <h4 class="journey__title">Обследование и решение</h4>
+                                    <p class="journey__text">Полное обследование зрения, расчёт параметров и консультация хирурга. Вместе решаем, подходит ли вам SMILE Pro.</p>
+                                </article>
+                                <article class="journey__slide">
+                                    <span class="journey__day">День операции</span>
+                                    <span class="journey__num" aria-hidden="true">02</span>
+                                    <span class="journey__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span>
+                                    <h4 class="journey__title">Коррекция за 8 секунд</h4>
+                                    <p class="journey__text">Безболезненно, под капельной анестезией. Лазер VisuMax 800 работает около 8 секунд на глаз. Домой можно уже через час.</p>
+                                </article>
+                                <article class="journey__slide">
+                                    <span class="journey__day">День 1</span>
+                                    <span class="journey__num" aria-hidden="true">03</span>
+                                    <span class="journey__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                                    <h4 class="journey__title">Контроль и ясное зрение</h4>
+                                    <p class="journey__text">На следующий день — контрольный осмотр. Большинство пациентов уже видят чётко и возвращаются к работе и за руль.</p>
+                                </article>
+                                <article class="journey__slide">
+                                    <span class="journey__day">Дни 2–7</span>
+                                    <span class="journey__num" aria-hidden="true">04</span>
+                                    <span class="journey__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 10.5a6 6 0 0 1-12 0C6 9.5 12 3 12 3z"/></svg></span>
+                                    <h4 class="journey__title">Первая неделя</h4>
+                                    <p class="journey__text">Капли по схеме и гигиена зрения. Временно стоит воздержаться от бассейна, сауны и контактного спорта.</p>
+                                </article>
+                                <article class="journey__slide">
+                                    <span class="journey__day">2–4 недели</span>
+                                    <span class="journey__num" aria-hidden="true">05</span>
+                                    <span class="journey__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5 7 5-14 2.5 7h4"/></svg></span>
+                                    <h4 class="journey__title">Стабилизация</h4>
+                                    <p class="journey__text">Зрение окончательно стабилизируется, возвращается полная активность — спорт, экраны, путешествия.</p>
+                                </article>
+                                <article class="journey__slide">
+                                    <span class="journey__day">Результат</span>
+                                    <span class="journey__num" aria-hidden="true">06</span>
+                                    <span class="journey__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.3 2 3.5 2 3.5-2 3.5-2"/><path d="M9 9.5h.01M15 9.5h.01"/></svg></span>
+                                    <h4 class="journey__title">Свобода без очков</h4>
+                                    <p class="journey__text">Чёткое зрение надолго — без очков и контактных линз.</p>
+                                    <a href="#booking" class="journey__cta">Записаться на диагностику</a>
+                                </article>
+                            </div>
+                            <button class="journey__arrow journey__arrow--prev" type="button" aria-label="Предыдущий слайд">‹</button>
+                            <button class="journey__arrow journey__arrow--next" type="button" aria-label="Следующий слайд">›</button>
+                            <div class="journey__dots" id="journeyDots" aria-hidden="true"></div>
                         </div>
                     </div>
                 </div>

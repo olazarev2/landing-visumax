@@ -852,3 +852,152 @@ img {
     padding-top: 10.2px;
     padding-bottom: 10.2px;
 }
+
+/* === 11. Карусель "Путь пациента по дням" (в блоке SMILE Pro, вместо видео) === */
+/* min-width:0 — чтобы колонка с overflow-x-каруселью не распирала строку */
+/* правой колонке — ровно 610px под слайд, текст занимает остаток */
+.smile-explain__text { min-width: 0; flex: 1 1 auto; }
+.smile-explain__media { min-width: 0; flex: 0 0 610px; max-width: 610px; }
+.smile-explain__media .journey { width: 100%; max-width: 610px; }
+.journey {
+    position: relative;
+    min-width: 0;
+}
+.journey__track {
+    display: flex;
+    min-width: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 16px;
+}
+.journey__track::-webkit-scrollbar { display: none; }
+.journey__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 16px;
+    padding: 64px 40px 40px;
+    height: 472px; /* фиксированный размер слайда 610×472 (ширина = колонка 610px) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* основной контент по центру по вертикали */
+    box-shadow: 0 10px 30px rgba(26, 40, 64, 0.08);
+}
+.journey__day {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 2;
+    background: #0094d6;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+}
+/* крупный полупрозрачный номер этапа — фон, заполняет пустоту */
+.journey__num {
+    position: absolute;
+    right: 6px;
+    bottom: -42px;
+    z-index: 0;
+    font-size: 210px;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(0, 148, 214, 0.07);
+    pointer-events: none;
+    user-select: none;
+}
+.journey__icon {
+    margin: 0 0 18px;
+    color: #0094d6;
+    line-height: 0;
+    position: relative;
+    z-index: 1;
+}
+.journey__icon svg { width: 58px; height: 58px; }
+.journey__title, .journey__text, .journey__cta { position: relative; z-index: 1; }
+.journey__title {
+    font-size: 1.25rem;
+    color: #1a2840;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+.journey__text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2f2f2f;
+    margin: 0;
+}
+.journey__cta {
+    margin-top: 18px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    background: #0094d6;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.journey__cta:hover { background: #007bb3; color: #fff; }
+.journey__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0;
+    background: #fff;
+    color: #1a2840;
+    box-shadow: 0 4px 14px rgba(26, 40, 64, 0.18);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.2s, color 0.2s;
+}
+.journey__arrow--prev { left: -10px; }
+.journey__arrow--next { right: -10px; }
+.journey__arrow:hover { background: #0094d6; color: #fff; }
+.journey__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+.journey__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 0;
+    background: #c7d0db;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, width 0.2s;
+}
+.journey__dot.is-active { background: #0094d6; width: 22px; }
+/* планшет: 610px может не помещаться рядом с текстом — разрешаем колонке сжиматься */
+@media (max-width: 991px) {
+    .smile-explain__media { flex: 0 1 610px; }
+}
+@media (max-width: 767px) {
+    .smile-explain__media { flex: 1 1 auto; max-width: 100%; }
+    .journey__slide { height: auto; min-height: 250px; padding: 26px 22px 30px; }
+    .journey__arrow { width: 36px; height: 36px; font-size: 1.4rem; }
+    .journey__arrow--prev { left: 2px; }
+    .journey__arrow--next { right: 2px; }
+}

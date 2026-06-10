@@ -892,9 +892,11 @@ img {
 /* фоновое изображение слайда (можно заменить файл на реальное фото) */
 .journey__bg {
     position: absolute;
-    inset: 0;
+    top: -4px; /* подтянуто на 4px вверх — скрывает тёмную линию по верхнему краю фото */
+    left: 0;
+    right: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% + 4px);
     object-fit: cover;
     z-index: 0;
 }
@@ -904,7 +906,7 @@ img {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(to top, rgba(8, 20, 35, 0.88) 0%, rgba(8, 20, 35, 0.55) 42%, rgba(8, 20, 35, 0.10) 100%);
+    background: linear-gradient(to top, rgba(8, 20, 35, 0.70) 0%, rgba(8, 20, 35, 0.44) 42%, rgba(8, 20, 35, 0.08) 100%); /* затемнение на 20% прозрачнее */
 }
 .journey__day {
     position: absolute;

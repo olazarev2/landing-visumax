@@ -668,6 +668,11 @@ main > section { padding: 20px 0; }
     border-radius: 24px;
     padding: 50px;
 }
+/* На десктопе карточка карусели сидит внутри .container (отступ 20px) и поэтому уже,
+   чем полноширокие секции-полосы («Преимущества» и т.д.). Компенсируем — карточка во всю ширину секции. */
+@media (min-width: 768px) {
+    .smile-explain__card { margin-left: -20px; margin-right: -20px; }
+}
 .smile-explain__row {
     display: flex;
     flex-direction: column; /* всё в столбик во всю ширину: заголовок+абзацы сверху, карусель под ними */

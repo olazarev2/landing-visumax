@@ -275,6 +275,12 @@ main > section { padding: 20px 0; }
 #about .border-block h3,
 #about .border-block p { width: 100%; }
 
+/* Секция "Клиника в цифрах" — во всю ширину экрана (фон+затемнение на весь вьюпорт; контейнер с контентом остаётся по центру) */
+#stats {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
 /* Выравнивание чисел "О клинике в цифрах" по одной линии в обеих колонках */
 #stats .about-us-item {
     display: flex;

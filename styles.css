@@ -403,10 +403,14 @@ main > section { padding: 20px 0; }
 /* Подпись под прайсом */
 .price-note {
     text-align: center;
-    margin: 60px auto 10px; /* по центру серой полосы: сверху 60px = снизу (10px margin + 50px padding секции) */
+    margin: 24px auto 4px; /* полоса ужата ~в 2 раза; по центру: сверху 24px = снизу (4px margin + 20px padding секции) */
     max-width: 900px;
     line-height: 1.5;
     color: #5f666d; /* a11y: вместо #c3c3c3 (1.7:1) — даёт ~4.9:1 на светлом фоне */
+}
+/* нижний отступ секции прайса уменьшен, чтобы серая полоса под подписью была ниже (см. margin подписи) */
+@media (min-width: 768px) {
+    #price { padding-bottom: 20px; }
 }
 @media (max-width: 767px) {
     .price-note {

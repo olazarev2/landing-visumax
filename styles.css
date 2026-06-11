@@ -868,10 +868,16 @@ img {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     border-radius: 16px;
+    /* видимая полоса прокрутки — навигация на десктопе (свайп на мобиле) */
+    padding-bottom: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: #0094d6 #dfe6ee;
 }
-.journey__track::-webkit-scrollbar { display: none; }
+.journey__track::-webkit-scrollbar { height: 9px; }
+.journey__track::-webkit-scrollbar-track { background: #dfe6ee; border-radius: 999px; }
+.journey__track::-webkit-scrollbar-thumb { background: #0094d6; border-radius: 999px; }
+.journey__track::-webkit-scrollbar-thumb:hover { background: #007bb3; }
 .journey__slide {
     flex: 0 0 100%;
     scroll-snap-align: center;

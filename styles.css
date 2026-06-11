@@ -881,7 +881,7 @@ img {
     position: relative;
     overflow: hidden;
     border-radius: 16px;
-    padding: 32px 34px;
+    padding: 32px 34px 22px;
     height: 472px; /* фиксированный размер слайда 610×472 (ширина = колонка 610px) */
     display: flex;
     flex-direction: column;
@@ -935,7 +935,7 @@ img {
     user-select: none;
 }
 .journey__icon {
-    margin: 0 0 14px;
+    margin: 0 0 8px;
     color: #fff;
     line-height: 0;
     position: relative;
@@ -948,14 +948,14 @@ img {
     font-size: 1.45rem;
     color: #fff;
     font-weight: 700;
-    margin: 0 0 10px;
+    margin: 0 0 6px;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 .journey__text {
     position: relative;
     z-index: 2;
     font-size: 1rem;
-    line-height: 1.55;
+    line-height: 1.42;
     color: rgba(255, 255, 255, 0.94);
     margin: 0;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -1022,7 +1022,7 @@ img {
 }
 @media (max-width: 767px) {
     .smile-explain__media { flex: 1 1 auto; max-width: 100%; }
-    .journey__slide { height: auto; min-height: 250px; padding: 26px 22px 30px; }
+    .journey__slide { height: auto; min-height: 250px; padding: 26px 22px 20px; }
     .journey__arrow { width: 36px; height: 36px; font-size: 1.4rem; }
     .journey__arrow--prev { left: 2px; }
     .journey__arrow--next { right: 2px; }

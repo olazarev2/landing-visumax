@@ -1023,7 +1023,10 @@ img {
 }
 .journey__dot.is-active { background: #0094d6; width: 22px; }
 @media (max-width: 767px) {
-    .journey__slide { padding: 26px 22px 20px; } /* высоту не трогаем — работает aspect-ratio 610/472 */
+    /* мобайл: полоса прокрутки скрыта системой -> убираем пустой отступ; */
+    /* слайд чуть уже экрана + зазор -> край следующего слайда выглядывает (подсказка «листай вбок») */
+    .journey__track { padding-bottom: 0; gap: 14px; }
+    .journey__slide { padding: 26px 22px 20px; flex-basis: 87%; scroll-snap-align: start; } /* высоту держит aspect-ratio 610/472 */
     .journey__arrow { width: 36px; height: 36px; font-size: 1.4rem; }
     .journey__arrow--prev { left: 2px; }
     .journey__arrow--next { right: 2px; }

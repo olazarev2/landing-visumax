@@ -403,7 +403,7 @@ main > section { padding: 20px 0; }
 /* Подпись под прайсом */
 .price-note {
     text-align: center;
-    margin: 30px auto 10px; /* по центру серой полосы по вертикали: сверху 30px, снизу 10+20(паддинг секции)=30px */
+    margin: 60px auto 10px; /* по центру серой полосы: сверху 60px = снизу (10px margin + 50px padding секции) */
     max-width: 900px;
     line-height: 1.5;
     color: #5f666d; /* a11y: вместо #c3c3c3 (1.7:1) — даёт ~4.9:1 на светлом фоне */

@@ -670,15 +670,11 @@ main > section { padding: 20px 0; }
 }
 .smile-explain__row {
     display: flex;
-    flex-wrap: wrap; /* узкая колонка (напр. на mikof.md) -> текст и карусель складываются в столбик */
-    align-items: stretch;
-    gap: 40px;
+    flex-direction: column; /* всё в столбик во всю ширину: заголовок+абзацы сверху, карусель под ними */
+    gap: 30px;
 }
 .smile-explain__text {
-    flex: 1 1 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
 }
 .smile-explain__title {
     font-size: 1.7rem;
@@ -695,7 +691,7 @@ main > section { padding: 20px 0; }
 }
 .smile-explain__text p:last-child { margin-bottom: 0; }
 .smile-explain__media {
-    flex: 1 1 50%;
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -858,9 +854,9 @@ img {
 /* === 11. Карусель "Путь пациента по дням" (в блоке SMILE Pro, вместо видео) === */
 /* min-width:0 — чтобы колонка с overflow-x-каруселью не распирала строку */
 /* правой колонке — ровно 610px под слайд, текст занимает остаток */
-.smile-explain__text { min-width: 280px; flex: 1 1 300px; }
-.smile-explain__media { min-width: 300px; flex: 1 1 420px; max-width: 610px; }
-.smile-explain__media .journey { width: 100%; max-width: 610px; }
+.smile-explain__text { width: 100%; min-width: 0; }
+.smile-explain__media { width: 100%; max-width: 100%; }
+.smile-explain__media .journey { width: 100%; max-width: 100%; }
 .journey {
     position: relative;
     min-width: 0;
@@ -1020,12 +1016,7 @@ img {
     transition: background 0.2s, width 0.2s;
 }
 .journey__dot.is-active { background: #0094d6; width: 22px; }
-/* планшет: 610px может не помещаться рядом с текстом — разрешаем колонке сжиматься */
-@media (max-width: 991px) {
-    .smile-explain__media { flex: 0 1 610px; }
-}
 @media (max-width: 767px) {
-    .smile-explain__media { flex: 1 1 auto; max-width: 100%; }
     .journey__slide { padding: 26px 22px 20px; } /* высоту не трогаем — работает aspect-ratio 610/472 */
     .journey__arrow { width: 36px; height: 36px; font-size: 1.4rem; }
     .journey__arrow--prev { left: 2px; }

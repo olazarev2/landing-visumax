@@ -882,7 +882,7 @@ img {
     overflow: hidden;
     border-radius: 16px;
     padding: 32px 34px 22px;
-    height: 472px; /* фиксированный размер слайда 610×472 (ширина = колонка 610px) */
+    aspect-ratio: 610 / 472; /* пропорция слайда сохраняется на всех экранах (десктоп 610×472, мобайл — масштабируется по ширине) */
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* текст внизу поверх фото */
@@ -1024,7 +1024,7 @@ img {
 }
 @media (max-width: 767px) {
     .smile-explain__media { flex: 1 1 auto; max-width: 100%; }
-    .journey__slide { height: auto; min-height: 250px; padding: 26px 22px 20px; }
+    .journey__slide { padding: 26px 22px 20px; } /* высоту не трогаем — работает aspect-ratio 610/472 */
     .journey__arrow { width: 36px; height: 36px; font-size: 1.4rem; }
     .journey__arrow--prev { left: 2px; }
     .journey__arrow--next { right: 2px; }

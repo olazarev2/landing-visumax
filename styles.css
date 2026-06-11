@@ -978,8 +978,8 @@ img {
 .journey__cta:hover { background: #007bb3; color: #fff; }
 .journey__arrow {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 0;
+    top: auto;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -996,14 +996,16 @@ img {
     z-index: 2;
     transition: background 0.2s, color 0.2s;
 }
-.journey__arrow--prev { left: -10px; }
-.journey__arrow--next { right: -10px; }
+.journey__arrow--prev { left: 0; }
+.journey__arrow--next { right: 0; }
 .journey__arrow:hover { background: #0094d6; color: #fff; }
 .journey__dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 12px;
+    min-height: 40px;
 }
 .journey__dot {
     width: 8px;

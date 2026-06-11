@@ -15,9 +15,25 @@
 
     var step = function () { return slides[1].offsetLeft - slides[0].offsetLeft || track.clientWidth; };
     var index = function () { return Math.round(track.scrollLeft / step()); };
+    // Плавная анимация scrollLeft вручную (rAF) — не дёргает страницу, в отличие от scrollTo({behavior:'smooth'}).
+    var anim = null;
+    var animateTo = function (target) {
+      if (anim) cancelAnimationFrame(anim);
+      var start = track.scrollLeft, dist = target - start, t0 = null, dur = 420;
+      var ease = function (p) { return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; };
+      track.style.scrollSnapType = 'none'; // на время анимации, чтобы snap не дёргал
+      var frame = function (ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        track.scrollLeft = start + dist * ease(p);
+        if (p < 1) anim = requestAnimationFrame(frame);
+        else { anim = null; track.style.scrollSnapType = ''; }
+      };
+      anim = requestAnimationFrame(frame);
+    };
     var goTo = function (i) {
       var n = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollTo({ left: n * step(), behavior: 'smooth' });
+      animateTo(n * step());
     };
 
     // стрелки (создаём динамически)
@@ -29,12 +45,19 @@
     }
     var prev = mkArrow('journey__arrow--prev', 'Предыдущий слайд', '‹');
     var next = mkArrow('journey__arrow--next', 'Следующий слайд', '›');
+    // mousedown preventDefault — не даём браузеру скроллить элемент в фокус при клике мышью (убирает «подскок»)
+    var noFocusScroll = function (e) { e.preventDefault(); };
+    prev.addEventListener('mousedown', noFocusScroll);
+    next.addEventListener('mousedown', noFocusScroll);
     prev.addEventListener('click', function () { goTo(index() - 1); });
     next.addEventListener('click', function () { goTo(index() + 1); });
     journey.appendChild(prev); journey.appendChild(next);
 
-    // активная точка + перехват клика (без прыжка по hash)
-    dots.forEach(function (d, i) { d.addEventListener('click', function (e) { e.preventDefault(); goTo(i); }); });
+    // активная точка + перехват клика (без прыжка по hash и без фокус-скролла)
+    dots.forEach(function (d, i) {
+      d.addEventListener('mousedown', noFocusScroll);
+      d.addEventListener('click', function (e) { e.preventDefault(); goTo(i); });
+    });
     var sync = function () { var idx = index(); dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); }); };
     track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); });
     sync();

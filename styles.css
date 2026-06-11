@@ -224,6 +224,7 @@ footer .social-media .btn-primary {
 .indications-row .border-block h3 {
     margin-top: 0;
     margin-bottom: 14px;
+    font-size: 22px; /* уменьшено, чтобы заголовки помещались в одну строку */
 }
 .indications-row .border-block ul {
     margin: 0;
@@ -231,11 +232,6 @@ footer .social-media .btn-primary {
 }
 .indications-row .border-block ul li:last-child {
     margin-bottom: 0;
-}
-/* На десктопе один заголовок в 1 строку, другой в 2 -> списки расходятся по высоте.
-   Резервируем заголовку высоту в 2 строки, чтобы маркеры стартовали на одном уровне. */
-@media (min-width: 768px) {
-    .indications-row .border-block h3 { min-height: 2.4em; }
 }
 
 /* Гарантированный зазор между блоками на мобильной (когда они стэкаются) */

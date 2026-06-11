@@ -373,7 +373,7 @@ main > section { padding: 20px 0; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #5fa6d4;
+    background: #0077b3; /* a11y: затемнён с #5fa6d4 — белый текст даёт 4.89:1 */
     color: #fff;
     font-size: 1.35rem;
     font-weight: 500;
@@ -385,7 +385,7 @@ main > section { padding: 20px 0; }
     min-height: 110px;
 }
 .booking-cta__btn:hover {
-    background: #0094d6;
+    background: #005f8c; /* при наведении темнее базового, контраст сохраняется */
     color: #fff;
 }
 @media (max-width: 767px) {
@@ -405,6 +405,7 @@ main > section { padding: 20px 0; }
     margin: 30px auto 10px; /* по центру серой полосы по вертикали: сверху 30px, снизу 10+20(паддинг секции)=30px */
     max-width: 900px;
     line-height: 1.5;
+    color: #5f666d; /* a11y: вместо #c3c3c3 (1.7:1) — даёт ~4.9:1 на светлом фоне */
 }
 @media (max-width: 767px) {
     .price-note {
@@ -600,7 +601,7 @@ main > section { padding: 20px 0; }
     color: #6c757d;
     white-space: normal;
 }
-.compare-table .cell-pro { color: #0094d6; }
+.compare-table .cell-pro { color: #0077b3; } /* a11y: затемнён с #0094d6 до 4.89:1 на белом (мелкий текст в таблице) */
 
 @media (max-width: 767px) {
     .compare-table table,
@@ -1029,3 +1030,7 @@ img {
     .journey__arrow--prev { left: 2px; }
     .journey__arrow--next { right: 2px; }
 }
+
+/* a11y: заголовки преимуществ синим #0094d6 на белом дают 3.39:1 — мало для обычного текста (нужно 4.5),
+   но достаточно для крупного (порог 3:1). Делаем их крупным текстом (>=18.66px + bold), цвет бренда сохраняется. */
+.block-item__title { font-size: 1.2rem; font-weight: 700; }

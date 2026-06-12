@@ -144,10 +144,14 @@ footer .social-media .btn-primary {
     footer .button.social-media { display: none !important; }
 }
 
-/* Карточки врачей — квадратные, как на mikof.md */
+/* Карточки врачей — фото фиксированного портретного размера, по центру колонки (как на mikof.md) */
 .our-team-item .our-team-img {
     border-radius: 0;
     background: #f5f6f8;
+    max-width: 215px;
+    height: 290px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .our-team-item .our-team-img img {
     width: 100%;
